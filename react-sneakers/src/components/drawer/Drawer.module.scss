@@ -1,0 +1,91 @@
+.drawer {
+    position: fixed;
+    width: 385px;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+    background: #fff;
+    box-shadow: -10px 4px 24px #000;
+    z-index: 10;
+    padding-top: 32px ;
+    padding-left: 30px;
+    padding-right: 30px;
+    display: flex;
+    flex-direction: column;
+
+    .heading {
+        margin-bottom: 30px;        
+    }
+    .items{
+        .item {
+            margin-bottom: 20px;
+            padding: 20px;
+            border: 1px solid #F3F3F3;
+            border-radius: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .textBox{ 
+            margin-left: 21px;
+            .title {
+                font-size: 14px;
+                margin-bottom: 8px;
+            }
+            .price{
+                font-size: 14px;
+                font-weight: bold;
+            }
+        }
+       
+        .closeBtn {
+            cursor: pointer;
+            margin-left: 12px;
+        }
+    }
+    .orderBlock{
+        margin-top: auto;
+        margin-bottom: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        p{
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+       
+    }
+   
+}
+.orderBtn {
+    width: 325px;
+    background-color: #9DD458;
+    padding: 18px 40px;
+    border: none;
+    border-radius: 18px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+}
+.emptyCart{
+    display: flex;
+    flex-direction: column;
+    margin-top: calc(55vh - 40vh);
+    .content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 40px;
+        p {
+            color: #9D9D9D;
+            font-size: 16px;
+        }
+        h2 {height: 22px;
+        font-weight: 600;
+        }
+    }
+}

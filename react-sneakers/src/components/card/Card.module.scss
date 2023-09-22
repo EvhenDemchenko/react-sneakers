@@ -1,0 +1,45 @@
+.wrapper {
+    width: 210px;
+    border: 1px solid #F3F3F3;
+    border-radius: 40px;
+    padding: 22px 27px 32px;
+    display: flex;
+    row-gap: 14px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+
+}
+.imgContent {
+    position: relative;
+    .favBtn {
+        position: absolute;
+        left: 0;
+        top: 0;
+        cursor: pointer;
+    }
+}
+.textContent {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    h3 {
+        font-size: 14px;
+        margin-bottom: 14px;
+    }
+    .priceDesc {
+        color:#BDBDBD;
+        font-size: 11px;
+        margin-bottom: 2px
+    }
+    .price {
+        font-size: 14px;
+        font-weight: bold;
+    }
+    .priceBlock{
+        display: flex;
+        justify-content: space-between;
+        cursor: pointer;
+    }
+}
