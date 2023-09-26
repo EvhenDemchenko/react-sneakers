@@ -11,7 +11,6 @@ node_modules
 dist
 dist-ssr
 *.local
-React_Sneakers
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

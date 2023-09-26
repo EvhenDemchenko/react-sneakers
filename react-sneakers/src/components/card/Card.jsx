@@ -1,6 +1,15 @@
 import styles from './Card.module.scss';
+import {
+  addItemToCart,
+  removeItemFromCart,
+  removeItemFromFavourite,
+  addItemToFavourites,
+} from '../../store/thunk';
+import { useDispatch } from 'react-redux';
 
-export const Card = ({ item, addToCartHandler, addItemsToFav }) => {
+export const Card = ({ item }) => {
+  const dispatch = useDispatch();
+
   const { id, title, price, isFav, inCart, imgPath } = item;
   return (
     <div className={styles.wrapper}>
@@ -8,23 +17,19 @@ export const Card = ({ item, addToCartHandler, addItemsToFav }) => {
         <img width={133} height={122} src={imgPath} alt="goods" />
         {isFav ? (
           <img
-            onClick={() => {
-              addItemsToFav(id);
-            }}
             width={32}
             height={32}
             className={styles.favBtn}
+            onClick={() => dispatch(removeItemFromFavourite(id))}
             src="./assets/favBtnActive.svg"
             alt="favourite btn"
           />
         ) : (
           <img
-            onClick={() => {
-              addItemsToFav(id);
-            }}
             width={32}
             height={32}
             className={styles.favBtn}
+            onClick={() => dispatch(addItemToFavourites(id))}
             src="./assets/favBtn.svg"
             alt="favourite btn"
           />
@@ -39,7 +44,7 @@ export const Card = ({ item, addToCartHandler, addItemsToFav }) => {
           </div>
           {inCart ? (
             <img
-              onClick={() => addToCartHandler(id)}
+              onClick={() => dispatch(removeItemFromCart(id))}
               src="./assets/plusBtnActive.svg"
               alt="add btn "
               width={32}
@@ -47,9 +52,9 @@ export const Card = ({ item, addToCartHandler, addItemsToFav }) => {
             />
           ) : (
             <img
+              onClick={() => dispatch(addItemToCart(id))}
               src="./assets/plus.svg"
               alt="add btn "
-              onClick={() => addToCartHandler(id)}
               width={32}
               height={32}
             />

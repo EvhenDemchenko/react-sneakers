@@ -1,13 +1,27 @@
 import styles from './Drawer.module.scss';
+import { useSelector, useDispatch } from 'react-redux';
+import Selector from '../../store/selectors';
+import { removeItemFromCart } from '../../store/thunk';
+import { setCartState } from '../../store/slice';
+import { useNavigate } from 'react-router-dom';
 
-export const Drawer = ({ items, cartSum, addToCartHandler, togleCartHandler }) => {
+export const Drawer = () => {
+  const items = useSelector(Selector.cartItems);
+  const navigate = useNavigate();
+  const cartItemsSum = useSelector(Selector.cartItemsSum);
+  const dispatch = useDispatch();
+
+  const orderSunmit = () => {
+    dispatch(setCartState('close'));
+    navigate('/orderpage');
+  };
+
   return (
     <div className={styles.drawer}>
       <h1 className={styles.heading}> Корзина </h1>
 
-      {items.length ? (
+      {items.length != 0 ? (
         <>
-          {' '}
           <div className={styles.items}>
             {items.map((item) => {
               return (
@@ -18,7 +32,7 @@ export const Drawer = ({ items, cartSum, addToCartHandler, togleCartHandler }) =
                     <p className={styles.price}>{item.price}</p>
                   </div>
                   <img
-                    onClick={() => addToCartHandler(item.id)}
+                    onClick={() => dispatch(removeItemFromCart(item.id))}
                     className={styles.closeBtn}
                     src="./assets/closeSvg.svg"
                     alt="closeBtn"
@@ -28,8 +42,10 @@ export const Drawer = ({ items, cartSum, addToCartHandler, togleCartHandler }) =
             })}
           </div>
           <div className={styles.orderBlock}>
-            <p>итого : {cartSum} Uah </p>
-            <button className={styles.orderBtn}>Оформить заказ </button>
+            <p>итого : {cartItemsSum} Uah </p>
+            <button onClick={orderSunmit} className={styles.orderBtn}>
+              Оформить заказ{' '}
+            </button>
           </div>
         </>
       ) : (
@@ -39,7 +55,7 @@ export const Drawer = ({ items, cartSum, addToCartHandler, togleCartHandler }) =
             <h2>Корзина пустая </h2>
             <p>Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ.</p>
           </div>
-          <button onClick={() => togleCartHandler(false)} className={styles.orderBtn}>
+          <button onClick={() => dispatch(setCartState('close'))} className={styles.orderBtn}>
             верунться назад{' '}
           </button>
         </div>

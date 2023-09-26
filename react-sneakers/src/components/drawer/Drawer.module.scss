@@ -17,7 +17,8 @@
     .heading {
         margin-bottom: 30px;        
     }
-    .items{
+    .items{ 
+        overflow: auto;
         .item {
             margin-bottom: 20px;
             padding: 20px;

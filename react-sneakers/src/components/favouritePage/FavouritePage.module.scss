@@ -1,0 +1,33 @@
+.container {
+    padding: 45px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+
+}
+.item {
+    width: 30%;
+    border: 1px solid #F3F3F3;
+    border-radius: 40px;
+    padding: 22px 27px 32px;
+    display: flex;
+    row-gap: 14px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.description {
+    font-size: 22px;
+    display: flex ;
+    justify-content: space-between;
+    font-weight: 700;
+}
+.heading {
+    padding: 45px 0 0 45px;
+}
+.altimg{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
